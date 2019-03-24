@@ -44,8 +44,9 @@
             "name" : "libhandy",
             "buildsystem" : "meson",
             "config-opts": [
-                    "-Dglade_catalog=false",
-                    "-Dintrospection=false",
+                    "-Dglade_catalog=disabled",
+                    "-Dintrospection=disabled",
+                    "-Dexamples=false",
                     "-Dtests=false"
             ],
             "sources" : [
