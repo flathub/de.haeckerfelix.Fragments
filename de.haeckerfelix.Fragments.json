@@ -1,7 +1,7 @@
 {
     "app-id" : "de.haeckerfelix.Fragments",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.30",
+    "runtime-version" : "3.32",
     "sdk" : "org.gnome.Sdk",
     "command" : "fragments",
     "finish-args" : [
@@ -14,6 +14,7 @@
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf",
+        "--talk-name=org.freedesktop.FileManager1",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "cleanup" : [
@@ -51,7 +52,7 @@
                 {
                     "type" : "git",
                     "url" : "https://source.puri.sm/Librem5/libhandy",
-                    "branch" : "v0.0.6"
+                    "branch" : "v0.0.9"
                 }
             ]
         },
@@ -62,8 +63,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/haecker-felix/Fragments",
-                    "branch" : "30eafee06736d478af80c1889fcc3c2f6d10f5b6"
+                    "url" : "https://gitlab.gnome.org/World/Fragments",
+                    "branch" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
                 }
             ]
         }
