@@ -62,6 +62,11 @@
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/World/Fragments",
                     "branch" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
+                },
+                {
+                    "type": "patch",
+                    "path": "appdata_oars.patch"
+
                 }
             ]
         }
