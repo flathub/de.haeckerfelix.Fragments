@@ -1,7 +1,7 @@
 {
     "app-id" : "de.haeckerfelix.Fragments",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.32",
+    "runtime-version" : "3.34",
     "sdk" : "org.gnome.Sdk",
     "command" : "fragments",
     "finish-args" : [
@@ -11,11 +11,8 @@
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf",
         "--talk-name=org.freedesktop.FileManager1",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--metadata=X-DConf=migrate-path=/de/haeckerfelix/Fragments/"
     ],
     "cleanup" : [
         "/include",
@@ -60,12 +57,16 @@
         {
             "name" : "fragments",
             "buildsystem" : "meson",
-            "builddir" : true,
             "sources" : [
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/World/Fragments",
                     "branch" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
+                },
+                {
+                    "type": "patch",
+                    "path": "appdata_oars.patch"
+
                 }
             ]
         }
