@@ -1,7 +1,7 @@
 {
     "app-id" : "de.haeckerfelix.Fragments",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.34",
+    "runtime-version" : "3.36",
     "sdk" : "org.gnome.Sdk",
     "command" : "fragments",
     "finish-args" : [
@@ -33,7 +33,7 @@
                 {
                     "type" : "git",
                     "url" : "https://github.com/libevent/libevent",
-                    "branch" : "release-2.1.8-stable"
+                    "tag" : "release-2.1.11-stable"
                 }
             ]
         },
@@ -50,7 +50,7 @@
                 {
                     "type" : "git",
                     "url" : "https://source.puri.sm/Librem5/libhandy",
-                    "branch" : "v0.0.9"
+                    "tag" : "v0.0.13"
                 }
             ]
         },
@@ -61,7 +61,8 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/World/Fragments",
-                    "branch" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
+                    "tag" : "1.4",
+                    "commit" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
                 },
                 {
                     "type": "patch",
