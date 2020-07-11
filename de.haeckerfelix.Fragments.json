@@ -31,9 +31,9 @@
             "name" : "libevent",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/libevent/libevent",
-                    "tag" : "release-2.1.11-stable"
+                    "type": "archive",
+                    "url": "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz",
+                    "sha256": "92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
                 }
             ]
         },
@@ -48,9 +48,9 @@
             ],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://source.puri.sm/Librem5/libhandy",
-                    "tag" : "v0.0.13"
+                    "type": "archive",
+                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/v0.0.13/libhandy-v0.0.13.tar.gz",
+                    "sha256": "a84dbb596bf6d1095c4c42f8d429967a923deb6f0d36cb422196be077f48c73d"
                 }
             ]
         },
