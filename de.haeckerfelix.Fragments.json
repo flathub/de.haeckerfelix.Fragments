@@ -5,14 +5,14 @@
     "sdk" : "org.gnome.Sdk",
     "command" : "fragments",
     "finish-args" : [
-        "--filesystem=home",
         "--device=dri",
         "--share=network",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
-        "--metadata=X-DConf=migrate-path=/de/haeckerfelix/Fragments/"
+        "--metadata=X-DConf=migrate-path=/de/haeckerfelix/Fragments/",
+        "--filesystem=home"
     ],
     "cleanup" : [
         "/include",
