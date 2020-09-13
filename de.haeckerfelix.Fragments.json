@@ -5,7 +5,7 @@
     "sdk" : "org.gnome.Sdk",
     "command" : "fragments",
     "finish-args" : [
-        "--filesystem=home",
+        "--filesystem=xdg-download",
         "--device=dri",
         "--share=network",
         "--share=ipc",
@@ -28,12 +28,75 @@
     ],
     "modules" : [
         {
-            "name" : "libevent",
-            "sources" : [
+            "name": "libtransmission",
+            "buildsystem": "cmake-ninja",
+            "config-opts":[
+                "-DINSTALL_LIB=ON",
+                "-DENABLE_DAEMON=OFF",
+                "-DENABLE_UTILS=OFF",
+                "-DENABLE_TESTS=OFF",
+                "-DENABLE_GTK=OFF",
+                "-DENABLE_QT=OFF",
+                "-DINSTALL_DOC=OFF"
+            ],
+            "sources": [{
+                "type": "git",
+                "url": "https://github.com/transmission/transmission.git",
+                "commit": "3d9fd25269ccfc1dacf9c5cd23a3d232e0085150"
+            }],
+            "modules": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/libevent/libevent",
-                    "tag" : "release-2.1.11-stable"
+                    "name": "libnatpmp",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [{
+                        "type": "git",
+                        "url": "https://github.com/transmission/libnatpmp",
+                        "commit": "4d3b9d87bbe7549830c212ce840600619abcf887"
+                    }]
+                },
+                {
+                    "name": "libevent",
+                    "sources": [{
+                            "type": "archive",
+                            "url": "https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
+                            "sha256": "316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
+                    }]
+                },
+                {
+                    "name": "libb64",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [{
+                        "type": "git",
+                        "url": "https://github.com/transmission/libb64",
+                        "commit": "8456a5b5c99ef4544a2ed8e8f20a2fb673dd4192"
+                    }]
+                },
+                {
+                    "name": "dht",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [{
+                        "type": "git",
+                        "url": "https://github.com/transmission/dht",
+                        "commit": "25e12bb39eea3d433602de6390796fec8a8f3620"
+                    }]
+                },
+                {
+                    "name": "miniupnpc",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [{
+                        "type": "git",
+                        "url": "https://github.com/transmission/miniupnpc",
+                        "commit": "e37cde82e8673a5e71bae43086828704fd5eeac1"
+                    }]
+                },
+                {
+                    "name": "libutp",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [{
+                        "type": "git",
+                        "url": "https://github.com/transmission/libutp",
+                        "commit": "fda9f4b3db97ccb243fcbed2ce280eb4135d705b"
+                    }]
                 }
             ]
         },
@@ -42,34 +105,24 @@
             "buildsystem" : "meson",
             "config-opts": [
                     "-Dglade_catalog=disabled",
-                    "-Dintrospection=disabled",
+                    "-Dintrospection=enabled",
                     "-Dexamples=false",
                     "-Dtests=false"
             ],
-            "sources" : [
-                {
+            "sources" : [{
                     "type" : "git",
-                    "url" : "https://source.puri.sm/Librem5/libhandy",
-                    "tag" : "v0.0.13"
-                }
-            ]
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy",
+                    "tag": "1.0.0"
+            }]
         },
         {
             "name" : "fragments",
             "buildsystem" : "meson",
-            "sources" : [
-                {
+            "sources" : [{
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/World/Fragments",
-                    "tag" : "1.4",
-                    "commit" : "f91ea9b576f3ff2621d5f3fda417a9a43107607c"
-                },
-                {
-                    "type": "patch",
-                    "path": "appdata_oars.patch"
-
-                }
-            ]
+                    "url" : "https://gitlab.gnome.org/World/Fragments.git",
+                    "tag" : "1.5"
+            }]
         }
     ]
 }
