@@ -77,7 +77,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/dht",
-                        "commit": "6b63fd8ce7644cf320b62ae74efe0c0febdd3157"
+                        "commit": "b02da5981ccb28af9d73f2b425d157f1a00bf223"
                     }]
                 },
                 {
@@ -95,7 +95,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/libutp",
-                        "commit": "2b364cbb0650bdab64a5de2abb4518f9f228ec44"
+                        "commit": "f22f814b5d46ecabb0081a8a0b190f6e93ed1a4d"
                     }]
                 }
             ]
