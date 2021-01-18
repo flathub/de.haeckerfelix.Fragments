@@ -42,7 +42,7 @@
             "sources": [{
                 "type": "git",
                 "url": "https://github.com/transmission/transmission.git",
-                "commit": "3d9fd25269ccfc1dacf9c5cd23a3d232e0085150"
+                "commit": "bb6b5a062ee594dfd4b7a12a6b6e860c43849bfd"
             }],
             "modules": [
                 {
@@ -58,8 +58,8 @@
                     "name": "libevent",
                     "sources": [{
                             "type": "archive",
-                            "url": "https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
-                            "sha256": "316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
+                            "url": "https://github.com/transmission/libevent/archive/release-2.1.12-stable.tar.gz",
+                            "sha256": "7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24"
                     }]
                 },
                 {
@@ -68,7 +68,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/libb64",
-                        "commit": "8456a5b5c99ef4544a2ed8e8f20a2fb673dd4192"
+                        "commit": "ce864b17ea0e24a91e77c7dd3eb2d1ac4175b3f0"
                     }]
                 },
                 {
@@ -77,7 +77,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/dht",
-                        "commit": "25e12bb39eea3d433602de6390796fec8a8f3620"
+                        "commit": "6b63fd8ce7644cf320b62ae74efe0c0febdd3157"
                     }]
                 },
                 {
@@ -86,7 +86,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/miniupnpc",
-                        "commit": "e37cde82e8673a5e71bae43086828704fd5eeac1"
+                        "commit": "6a1ead7ee884db6d134a1304b5d10a308c30a957"
                     }]
                 },
                 {
@@ -95,7 +95,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/libutp",
-                        "commit": "fda9f4b3db97ccb243fcbed2ce280eb4135d705b"
+                        "commit": "2b364cbb0650bdab64a5de2abb4518f9f228ec44"
                     }]
                 }
             ]
@@ -112,7 +112,7 @@
             "sources" : [{
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/GNOME/libhandy",
-                    "tag": "1.0.0"
+                    "tag": "1.0.3"
             }]
         },
         {
