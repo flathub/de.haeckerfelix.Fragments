@@ -68,7 +68,7 @@
                     "sources": [{
                         "type": "git",
                         "url": "https://github.com/transmission/libb64",
-                        "commit": "ce864b17ea0e24a91e77c7dd3eb2d1ac4175b3f0"
+                        "commit": "bc6fe19cefde5a1d731b38891c64db0d98b06f18"
                     }]
                 },
                 {
