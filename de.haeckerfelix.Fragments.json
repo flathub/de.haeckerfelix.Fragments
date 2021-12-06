@@ -71,7 +71,7 @@
                 {
                   "type": "git",
                   "url": "https://gitlab.gnome.org/GNOME/pango.git",
-                  "commit" : "0c80c6d0b80cce4443e9a18fad2b4bccabaf4325"
+                  "commit" : "e80e224baabc7bf22971d0a97c8b31d32fa8ca1c"
                 }
             ]
         },
