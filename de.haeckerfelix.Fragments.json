@@ -1,13 +1,13 @@
 {
-    "app-id": "de.haeckerfelix.Fragments",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "41",
-    "sdk": "org.gnome.Sdk",
-    "sdk-extensions" : [
+    "app-id":"de.haeckerfelix.Fragments",
+    "runtime":"org.gnome.Platform",
+    "runtime-version":"41",
+    "sdk":"org.gnome.Sdk",
+    "sdk-extensions":[
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
-    "command": "fragments",
-    "finish-args": [
+    "command":"fragments",
+    "finish-args":[
         "--filesystem=xdg-download",
         "--device=dri",
         "--share=network",
@@ -18,12 +18,13 @@
         "--talk-name=org.freedesktop.secrets",
         "--talk-name=org.a11y.Bus",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug"
+        "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
+        "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
     ],
-    "build-options": {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin"
+    "build-options":{
+        "append-path":"/usr/lib/sdk/rust-stable/bin"
     },
-    "cleanup": [
+    "cleanup":[
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -34,124 +35,142 @@
         "*.la",
         "*.a"
     ],
-    "modules": [
+    "modules":[
         {
-            "name": "libsass",
-            "sources": [
+            "name":"libsass",
+            "sources":[
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/sass/libsass/archive/3.6.4.tar.gz",
-                    "sha256": "f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
+                    "type":"archive",
+                    "url":"https://github.com/sass/libsass/archive/3.6.4.tar.gz",
+                    "sha256":"f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
                 },
                 {
-                    "type" : "script",
-                    "dest-filename" : "autogen.sh",
-                    "commands" : [ "autoreconf -si" ]
+                    "type":"script",
+                    "dest-filename":"autogen.sh",
+                    "commands":[
+                        "autoreconf -si"
+                    ]
                 }
             ]
         },
         {
-            "name": "sassc",
-            "sources": [
+            "name":"sassc",
+            "sources":[
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/sass/sassc/archive/3.6.1.tar.gz",
-                    "sha256": "8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60"
+                    "type":"archive",
+                    "url":"https://github.com/sass/sassc/archive/3.6.1.tar.gz",
+                    "sha256":"8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60"
                 },
                 {
-                    "type" : "script",
-                    "dest-filename" : "autogen.sh",
-                    "commands" : [ "autoreconf -si" ]
+                    "type":"script",
+                    "dest-filename":"autogen.sh",
+                    "commands":[
+                        "autoreconf -si"
+                    ]
                 }
             ]
         },
         {
-            "name": "pango",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                  "type": "git",
-                  "url": "https://gitlab.gnome.org/GNOME/pango.git",
-                  "commit" : "e80e224baabc7bf22971d0a97c8b31d32fa8ca1c"
-                }
-            ]
-        },
-        {
-            "name": "gtk",
-            "buildsystem": "meson",
-            "config-opts" : [
-                    "-Dbuild-examples=false",
-                    "-Dbuild-tests=false"
+            "name":"pango",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dintrospection=disabled"
             ],
-            "sources": [
+            "sources":[
                 {
-                  "type": "git",
-                  "url": "https://gitlab.gnome.org/GNOME/gtk.git",
-                  "commit" : "b2c227e9c57839a2a4e24462a71ae0bad9a95264"
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/GNOME/pango/-/archive/1.50.3/pango-1.50.3.tar.gz",
+                    "sha256":"4a8b0cf33d5f9ecaa9cd99dd72703d5c4c53bc58df64dd9538493bb4356ab691"
                 }
             ]
         },
         {
-            "name" : "libadwaita",
-            "buildsystem": "meson",
-            "config-opts" : [
-                "-Dvapi=true",
+            "name":"gtk",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false",
+                "-Dintrospection=disabled"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://download.gnome.org/sources/gtk/4.6/gtk-4.6.0.tar.xz",
+                    "sha256":"782d5951fbfd585fc9ec76c09d07e28e6014c72db001fb567fff217fb96e4d8c"
+                }
+            ]
+        },
+        {
+            "name":"libadwaita",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dvapi=false",
                 "-Dexamples=false",
                 "-Dtests=false"
             ],
-            "sources" : [
+            "sources":[
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "commit" : "a58d7f4f186e1588051b4e50d95cbd67f9010fd2"
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.0.1/libadwaita-1.0.1.tar.gz",
+                    "sha256":"2a178c074ce9a78d39a5889a007b201ef130690b6afab6b773c9baaebdf7d980"
                 }
             ]
         },
         {
-            "name": "intltool",
-            "cleanup": [ "*" ],
-            "sources": [{
-                "type": "archive",
-                "url": "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
-                "sha256": "67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
-            }]
+            "name":"intltool",
+            "cleanup":[
+                "*"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
+                    "sha256":"67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
+                }
+            ]
         },
         {
-            "name": "libevent",
-            "sources": [{
-            "type": "archive",
-                "url": "https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
-                "sha256": "316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
-            }]
+            "name":"libevent",
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
+                    "sha256":"316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
+                }
+            ]
         },
         {
-            "name" : "transmission",
-            "buildsystem" : "autotools",
-            "config-opts" : [
+            "name":"transmission",
+            "buildsystem":"autotools",
+            "config-opts":[
                 "--without-gtk",
                 "--without-cli",
                 "--enable-daemon"
             ],
-            "sources" : [
+            "sources":[
                 {
-                    "type": "archive",
-                    "url": "https://github.com/transmission/transmission/releases/download/3.00/transmission-3.00.tar.xz",
-                    "sha256": "9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
+                    "type":"archive",
+                    "url":"https://github.com/transmission/transmission/releases/download/3.00/transmission-3.00.tar.xz",
+                    "sha256":"9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
+                },
+                {
+                    "type":"patch",
+                    "path":"transmission_pdeathsig.patch"
                 }
             ]
         },
         {
-            "name": "fragments",
-            "builddir": true,
-            "buildsystem": "meson",
-            "config-opts" : [
+            "name":"fragments",
+            "builddir":true,
+            "buildsystem":"meson",
+            "config-opts":[
                 "-Dprofile=beta"
             ],
-            "sources": [
+            "sources":[
                 {
-                    "type" : "archive",
-                    "url" : "https://gitlab.gnome.org/World/Fragments/uploads/c98dd1c0f0ff2308e2b4e7a5c086c524/fragments-1.9.1.tar.xz",
-                    "sha256": "0448159a47629fc8b39a7af954b6aa50b2cccb1ef8d2e0a14db5c57e3b7addbd"
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/8ecd1d3a1565ca3cb6ef2a3a5af127f8/fragments-1.9.2.tar.xz",
+                    "sha256":"de0dcca1cde71aea7f8c3e00dbe4e68a75509d47ff0e405af3017d783dc4bb14"
                 }
             ]
         }
