@@ -1,0 +1,35 @@
+diff --git a/daemon/daemon.c b/daemon/daemon.c
+index 361b9ee19..70aae8c42 100644
+--- a/daemon/daemon.c
++++ b/daemon/daemon.c
+@@ -9,6 +9,17 @@
+ #include <errno.h>
+ #include <stdio.h> /* printf */
+ #include <stdlib.h> /* atoi */
++#include <signal.h>
++
++#ifdef __linux__
++#include <sys/prctl.h>
++#include <sys/types.h>
++#include <sys/syscall.h>
++#endif
++
++#ifdef __FreeBSD__
++#include <sys/procctl.h>
++#endif
+
+ #ifdef HAVE_SYSLOG
+ #include <syslog.h>
+@@ -844,6 +855,13 @@ exit_early:
+
+ int tr_main(int argc, char* argv[])
+ {
++
++    #ifdef __linux__
++      prctl (PR_SET_PDEATHSIG, SIGTERM);
++    #elif defined(__FreeBSD__)
++      procctl (P_PID, 0, PROC_PDEATHSIG_CTL, &(int){ SIGTERM });
++    #endif
++
+     key_pidfile = tr_quark_new("pidfile", TR_BAD_SIZE);
+     key_watch_dir_force_generic = tr_quark_new("watch-dir-force-generic", TR_BAD_SIZE);
