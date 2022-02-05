@@ -163,14 +163,11 @@
             "name":"fragments",
             "builddir":true,
             "buildsystem":"meson",
-            "config-opts":[
-                "-Dprofile=beta"
-            ],
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/8ecd1d3a1565ca3cb6ef2a3a5af127f8/fragments-1.9.2.tar.xz",
-                    "sha256":"de0dcca1cde71aea7f8c3e00dbe4e68a75509d47ff0e405af3017d783dc4bb14"
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/a94ccca8a7c8cc01ac92ed64eda8f25e/fragments-2.0.0.tar.xz",
+                    "sha256":"dd8ed82bff1da0fde21c6c93f11f3d3f5913698284da8e5f12065b975b23307c"
                 }
             ]
         }
