@@ -1,20 +1,30 @@
 {
-    "app-id" : "de.haeckerfelix.Fragments",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "40",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "fragments",
-    "finish-args" : [
+    "app-id":"de.haeckerfelix.Fragments",
+    "runtime":"org.gnome.Platform",
+    "runtime-version":"41",
+    "sdk":"org.gnome.Sdk",
+    "sdk-extensions":[
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command":"fragments",
+    "finish-args":[
         "--filesystem=xdg-download",
         "--device=dri",
         "--share=network",
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
-        "--metadata=X-DConf=migrate-path=/de/haeckerfelix/Fragments/"
+        "--talk-name=org.freedesktop.secrets",
+        "--talk-name=org.a11y.Bus",
+        "--env=RUST_BACKTRACE=1",
+        "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
+        "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
     ],
-    "cleanup" : [
+    "build-options":{
+        "append-path":"/usr/lib/sdk/rust-stable/bin"
+    },
+    "cleanup":[
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -22,107 +32,144 @@
         "/share/gtk-doc",
         "/share/man",
         "/share/pkgconfig",
-        "/share/vala",
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules":[
         {
-            "name": "libtransmission",
-            "buildsystem": "cmake-ninja",
-            "config-opts":[
-                "-DINSTALL_LIB=ON",
-                "-DENABLE_DAEMON=OFF",
-                "-DENABLE_UTILS=OFF",
-                "-DENABLE_TESTS=OFF",
-                "-DENABLE_GTK=OFF",
-                "-DENABLE_QT=OFF",
-                "-DINSTALL_DOC=OFF"
-            ],
-            "sources": [{
-                "type": "git",
-                "url": "https://github.com/transmission/transmission.git",
-                "commit": "3d9fd25269ccfc1dacf9c5cd23a3d232e0085150"
-            }],
-            "modules": [
+            "name":"libsass",
+            "sources":[
                 {
-                    "name": "libnatpmp",
-                    "buildsystem": "cmake-ninja",
-                    "sources": [{
-                        "type": "git",
-                        "url": "https://github.com/transmission/libnatpmp",
-                        "commit": "4d3b9d87bbe7549830c212ce840600619abcf887"
-                    }]
+                    "type":"archive",
+                    "url":"https://github.com/sass/libsass/archive/3.6.4.tar.gz",
+                    "sha256":"f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
                 },
                 {
-                    "name": "libevent",
-                    "sources": [{
-                            "type": "archive",
-                            "url": "https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
-                            "sha256": "316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
-                    }]
-                },
-                {
-                    "name": "libb64",
-                    "buildsystem": "cmake-ninja",
-                    "sources": [{
-                        "type": "git",
-                        "url": "https://github.com/transmission/libb64",
-                        "commit": "8456a5b5c99ef4544a2ed8e8f20a2fb673dd4192"
-                    }]
-                },
-                {
-                    "name": "dht",
-                    "buildsystem": "cmake-ninja",
-                    "sources": [{
-                        "type": "git",
-                        "url": "https://github.com/transmission/dht",
-                        "commit": "25e12bb39eea3d433602de6390796fec8a8f3620"
-                    }]
-                },
-                {
-                    "name": "miniupnpc",
-                    "buildsystem": "cmake-ninja",
-                    "sources": [{
-                        "type": "git",
-                        "url": "https://github.com/transmission/miniupnpc",
-                        "commit": "e37cde82e8673a5e71bae43086828704fd5eeac1"
-                    }]
-                },
-                {
-                    "name": "libutp",
-                    "buildsystem": "cmake-ninja",
-                    "sources": [{
-                        "type": "git",
-                        "url": "https://github.com/transmission/libutp",
-                        "commit": "fda9f4b3db97ccb243fcbed2ce280eb4135d705b"
-                    }]
+                    "type":"script",
+                    "dest-filename":"autogen.sh",
+                    "commands":[
+                        "autoreconf -si"
+                    ]
                 }
             ]
         },
         {
-            "name" : "libhandy",
-            "buildsystem" : "meson",
-            "config-opts": [
-                    "-Dglade_catalog=disabled",
-                    "-Dintrospection=enabled",
-                    "-Dexamples=false",
-                    "-Dtests=false"
-            ],
-            "sources" : [{
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libhandy",
-                    "tag": "1.0.0"
-            }]
+            "name":"sassc",
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://github.com/sass/sassc/archive/3.6.1.tar.gz",
+                    "sha256":"8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60"
+                },
+                {
+                    "type":"script",
+                    "dest-filename":"autogen.sh",
+                    "commands":[
+                        "autoreconf -si"
+                    ]
+                }
+            ]
         },
         {
-            "name" : "fragments",
-            "buildsystem" : "meson",
-            "sources" : [{
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/World/Fragments.git",
-                    "tag" : "1.5"
-            }]
+            "name":"pango",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dintrospection=disabled"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/GNOME/pango/-/archive/1.50.3/pango-1.50.3.tar.gz",
+                    "sha256":"4a8b0cf33d5f9ecaa9cd99dd72703d5c4c53bc58df64dd9538493bb4356ab691"
+                }
+            ]
+        },
+        {
+            "name":"gtk",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false",
+                "-Dintrospection=disabled"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://download.gnome.org/sources/gtk/4.6/gtk-4.6.0.tar.xz",
+                    "sha256":"782d5951fbfd585fc9ec76c09d07e28e6014c72db001fb567fff217fb96e4d8c"
+                }
+            ]
+        },
+        {
+            "name":"libadwaita",
+            "buildsystem":"meson",
+            "config-opts":[
+                "-Dvapi=false",
+                "-Dexamples=false",
+                "-Dtests=false"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.0.1/libadwaita-1.0.1.tar.gz",
+                    "sha256":"2a178c074ce9a78d39a5889a007b201ef130690b6afab6b773c9baaebdf7d980"
+                }
+            ]
+        },
+        {
+            "name":"intltool",
+            "cleanup":[
+                "*"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
+                    "sha256":"67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
+                }
+            ]
+        },
+        {
+            "name":"libevent",
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
+                    "sha256":"316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
+                }
+            ]
+        },
+        {
+            "name":"transmission",
+            "buildsystem":"autotools",
+            "config-opts":[
+                "--without-gtk",
+                "--without-cli",
+                "--enable-daemon"
+            ],
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://github.com/transmission/transmission/releases/download/3.00/transmission-3.00.tar.xz",
+                    "sha256":"9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
+                },
+                {
+                    "type":"patch",
+                    "path":"transmission_pdeathsig.patch"
+                }
+            ]
+        },
+        {
+            "name":"fragments",
+            "builddir":true,
+            "buildsystem":"meson",
+            "sources":[
+                {
+                    "type":"archive",
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/a94ccca8a7c8cc01ac92ed64eda8f25e/fragments-2.0.0.tar.xz",
+                    "sha256":"dd8ed82bff1da0fde21c6c93f11f3d3f5913698284da8e5f12065b975b23307c"
+                }
+            ]
         }
     ]
 }
