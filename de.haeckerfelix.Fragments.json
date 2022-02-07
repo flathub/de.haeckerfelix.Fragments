@@ -16,7 +16,6 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
         "--talk-name=org.freedesktop.secrets",
-        "--talk-name=org.a11y.Bus",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
