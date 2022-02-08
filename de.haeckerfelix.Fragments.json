@@ -160,7 +160,6 @@
         },
         {
             "name":"fragments",
-            "builddir":true,
             "buildsystem":"meson",
             "sources":[
                 {
