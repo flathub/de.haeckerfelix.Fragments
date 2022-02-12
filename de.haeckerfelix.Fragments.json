@@ -16,7 +16,6 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
         "--talk-name=org.freedesktop.secrets",
-        "--talk-name=org.a11y.Bus",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
@@ -161,13 +160,12 @@
         },
         {
             "name":"fragments",
-            "builddir":true,
             "buildsystem":"meson",
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/a94ccca8a7c8cc01ac92ed64eda8f25e/fragments-2.0.0.tar.xz",
-                    "sha256":"dd8ed82bff1da0fde21c6c93f11f3d3f5913698284da8e5f12065b975b23307c"
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/3cc82947769ee052bcb7a34632e8d8f5/fragments-2.0.2.tar.xz",
+                    "sha256":"7dc2c5f7b2d08f3217fb575add0cc90d51f96c2c685cfb39b41676c414cd5e1"
                 }
             ]
         }
