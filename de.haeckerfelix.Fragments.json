@@ -164,8 +164,8 @@
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/d9c985fc1f59f61b8a04c1248a08b7e4/fragments-2.0.1.tar.xz",
-                    "sha256":"b88610556a5dd6b695b65c054ebf8ea7b3c2061a156a38d94b5409e9f3f72a4e"
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/3cc82947769ee052bcb7a34632e8d8f5/fragments-2.0.2.tar.xz",
+                    "sha256":"7dc2c5f7b2d08f3217fb575add0cc90d51f96c2c685cfb39b41676c414cd5e1"
                 }
             ]
         }
