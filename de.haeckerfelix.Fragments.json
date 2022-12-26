@@ -1,14 +1,14 @@
 {
     "app-id":"de.haeckerfelix.Fragments",
     "runtime":"org.gnome.Platform",
-    "runtime-version":"42",
+    "runtime-version":"43",
     "sdk":"org.gnome.Sdk",
     "sdk-extensions":[
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
     "command":"fragments",
     "finish-args":[
-        "--filesystem=xdg-download",
+        "--filesystem=host",
         "--device=dri",
         "--share=network",
         "--share=ipc",
@@ -16,6 +16,7 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
         "--talk-name=org.freedesktop.secrets",
+        "--env=OPENSSL_CONF=/app/openssl.cnf",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
@@ -54,6 +55,9 @@
                 "--without-cli",
                 "--enable-daemon"
             ],
+            "post-install": [
+                "install -D openssl.cnf /app/openssl.cnf"
+            ],
             "sources":[
                 {
                     "type":"archive",
@@ -63,6 +67,10 @@
                 {
                     "type":"patch",
                     "path":"transmission_pdeathsig.patch"
+                },
+                {
+                    "type": "file",
+                    "path": "openssl.cnf"
                 }
             ]
         },
@@ -72,8 +80,8 @@
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/3cc82947769ee052bcb7a34632e8d8f5/fragments-2.0.2.tar.xz",
-                    "sha256":"7dc2c5f7b2d08f3217fb575add0cc90d51f96c2c685cfb39b41676c414cd5e19"
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/bc6347513638efaf1a9e095ffa4c23ca/fragments-2.1.tar.xz",
+                    "sha256":"7f339637d6368dbbea394e897e6034c28525bb0110515600144214692417845b"
                 }
             ]
         }
