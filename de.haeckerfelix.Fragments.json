@@ -80,8 +80,8 @@
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/bc6347513638efaf1a9e095ffa4c23ca/fragments-2.1.tar.xz",
-                    "sha256":"7f339637d6368dbbea394e897e6034c28525bb0110515600144214692417845b"
+                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/53fb289f8ffd39f95eb1b367f20ecde1/fragments-2.1.1.tar.xz",
+                    "sha256":"93b8fb68cd04b2993358ae97baf498f4449976b0dd8e5b3b62337123922ad955"
                 }
             ]
         }
