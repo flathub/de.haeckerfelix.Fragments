@@ -1,7 +1,7 @@
 {
     "app-id":"de.haeckerfelix.Fragments",
     "runtime":"org.gnome.Platform",
-    "runtime-version":"44",
+    "runtime-version":"45",
     "sdk":"org.gnome.Sdk",
     "sdk-extensions":[
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -42,8 +42,8 @@
             "sources":[
                 {
                     "type":"archive",
-                    "url":"https://github.com/transmission/libevent/archive/release-2.1.8-stable.tar.gz",
-                    "sha256":"316ddb401745ac5d222d7c529ef1eada12f58f6376a66c1118eee803cb70f83d"
+                    "url":"https://github.com/transmission/libevent/archive/release-2.1.12-stable.tar.gz",
+                    "sha256":"7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24"
                 }
             ]
         },
