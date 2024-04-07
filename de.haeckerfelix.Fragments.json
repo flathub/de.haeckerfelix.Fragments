@@ -7,9 +7,6 @@
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
     "command": "fragments",
-    "tags": [
-        "nightly"
-    ],
     "finish-args": [
         "--socket=wayland",
         "--socket=fallback-x11",
