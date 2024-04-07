@@ -1,11 +1,11 @@
-diff --git a/daemon/daemon.c b/daemon/daemon.c
-index 361b9ee19..70aae8c42 100644
---- a/daemon/daemon.c
-+++ b/daemon/daemon.c
-@@ -9,6 +9,17 @@
- #include <errno.h>
- #include <stdio.h> /* printf */
- #include <stdlib.h> /* atoi */
+diff --git a/daemon/daemon.cc b/daemon/daemon.cc
+index 335b32fcd..e6b10c8e8 100644
+--- a/daemon/daemon.cc
++++ b/daemon/daemon.cc
+@@ -10,6 +10,18 @@
+ #include <iostream>
+ #include <memory>
+
 +#include <signal.h>
 +
 +#ifdef __linux__
@@ -17,19 +17,20 @@ index 361b9ee19..70aae8c42 100644
 +#ifdef __FreeBSD__
 +#include <sys/procctl.h>
 +#endif
-
++
  #ifdef HAVE_SYSLOG
  #include <syslog.h>
-@@ -844,6 +855,13 @@ exit_early:
+ #endif
+@@ -939,6 +951,12 @@ void tr_daemon::handle_error(tr_error* error) const
 
  int tr_main(int argc, char* argv[])
  {
-+
 +    #ifdef __linux__
 +      prctl (PR_SET_PDEATHSIG, SIGTERM);
 +    #elif defined(__FreeBSD__)
 +      procctl (P_PID, 0, PROC_PDEATHSIG_CTL, &(int){ SIGTERM });
 +    #endif
 +
-     key_pidfile = tr_quark_new("pidfile", TR_BAD_SIZE);
-     key_watch_dir_force_generic = tr_quark_new("watch-dir-force-generic", TR_BAD_SIZE);
+     tr_locale_set_global("");
+
+     int ret;
