@@ -77,6 +77,10 @@
                     "type": "archive",
                     "url": "https://gitlab.gnome.org/World/Fragments/uploads/0a322decb848196690126d5674f9b544/fragments-3.0.0.tar.xz",
                     "sha256": "ede25d6a93f3491d92e038fc1187108d1f63b6b83a6adbba6ebdf7694f8799c6"
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-metainfo-Fix-release-date-of-3.0.0.patch"
                 }
             ]
         }
