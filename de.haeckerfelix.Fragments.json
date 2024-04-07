@@ -1,30 +1,31 @@
 {
-    "app-id":"de.haeckerfelix.Fragments",
-    "runtime":"org.gnome.Platform",
-    "runtime-version":"45",
-    "sdk":"org.gnome.Sdk",
-    "sdk-extensions":[
+    "id": "de.haeckerfelix.Fragments",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "46",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
-    "command":"fragments",
-    "finish-args":[
-        "--filesystem=host",
+    "command": "fragments",
+    "tags": [
+        "nightly"
+    ],
+    "finish-args": [
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--share=ipc",
         "--device=dri",
         "--share=network",
-        "--share=ipc",
-        "--socket=fallback-x11",
-        "--socket=wayland",
-        "--talk-name=org.freedesktop.FileManager1",
+        "--filesystem=host",
         "--talk-name=org.freedesktop.secrets",
-        "--env=OPENSSL_CONF=/app/openssl.cnf",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
     ],
-    "build-options":{
-        "append-path":"/usr/lib/sdk/rust-stable/bin"
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin"
     },
-    "cleanup":[
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -35,53 +36,47 @@
         "*.la",
         "*.a"
     ],
-    "modules":[
-        "shared-modules/intltool/intltool-0.51.json",
+    "modules": [
         {
-            "name":"libevent",
-            "sources":[
+            "name": "libevent",
+            "sources": [
                 {
-                    "type":"archive",
-                    "url":"https://github.com/transmission/libevent/archive/release-2.1.12-stable.tar.gz",
-                    "sha256":"7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24"
+                    "type": "archive",
+                    "url": "https://github.com/transmission/libevent/archive/release-2.1.12-stable.tar.gz",
+                    "sha256": "7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24"
                 }
             ]
         },
         {
-            "name":"transmission",
-            "buildsystem":"autotools",
-            "config-opts":[
-                "--without-gtk",
-                "--without-cli",
-                "--enable-daemon"
+            "name": "transmission",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DENABLE_CLI=OFF",
+                "-DENABLE_TESTS=OFF",
+                "-DENABLE_MAC=OFF",
+                "-DENABLE_DAEMON=ON",
+                "-DENABLE_GTK=OFF"
             ],
-            "post-install": [
-                "install -D openssl.cnf /app/openssl.cnf"
-            ],
-            "sources":[
+            "sources": [
                 {
-                    "type":"archive",
-                    "url":"https://github.com/transmission/transmission/releases/download/3.00/transmission-3.00.tar.xz",
-                    "sha256":"9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2"
+                    "type": "git",
+                    "url": "https://github.com/transmission/transmission",
+                    "tag": "4.0.5"
                 },
                 {
-                    "type":"patch",
-                    "path":"transmission_pdeathsig.patch"
-                },
-                {
-                    "type": "file",
-                    "path": "openssl.cnf"
+                    "type": "patch",
+                    "path": "transmission_pdeathsig.patch"
                 }
             ]
         },
         {
-            "name":"fragments",
-            "buildsystem":"meson",
-            "sources":[
+            "name": "fragments",
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type":"archive",
-                    "url":"https://gitlab.gnome.org/World/Fragments/uploads/7578eee7df552d1f9b995120100959a2/fragments-2.1.1.tar.xz",
-                    "sha256":"846699ef6fd13ba1f518b159bd0e9a1020f4a402e2c7e42dcc9182ab1f90906a"
+                    "type": "archive",
+                    "url": "https://gitlab.gnome.org/World/Fragments/uploads/0a322decb848196690126d5674f9b544/fragments-3.0.0.tar.xz",
+                    "sha256": "ede25d6a93f3491d92e038fc1187108d1f63b6b83a6adbba6ebdf7694f8799c6"
                 }
             ]
         }
