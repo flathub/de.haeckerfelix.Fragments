@@ -49,7 +49,7 @@
         },
         {
             "name": "transmission",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DENABLE_CLI=OFF",
                 "-DENABLE_TESTS=OFF",
