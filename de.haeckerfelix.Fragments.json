@@ -14,7 +14,6 @@
         "--device=dri",
         "--share=network",
         "--filesystem=host",
-        "--talk-name=org.freedesktop.secrets",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
@@ -58,7 +57,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/transmission/transmission",
-                    "tag": "4.0.5"
+                    "tag": "4.0.6"
                 },
                 {
                     "type": "patch",
@@ -72,12 +71,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/World/Fragments/uploads/0a322decb848196690126d5674f9b544/fragments-3.0.0.tar.xz",
-                    "sha256": "ede25d6a93f3491d92e038fc1187108d1f63b6b83a6adbba6ebdf7694f8799c6"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-metainfo-Fix-release-date-of-3.0.0.patch"
+                    "url": "https://gitlab.gnome.org/World/Fragments/uploads/4a5dcb11cec0b0438ad575db08aa755c/fragments-3.0.1.tar.xz",
+                    "sha256": "e3a30957757f2830a12514baff94382c90565e5013107ece33b0b1dfbde2c055"
                 }
             ]
         }
