@@ -1,7 +1,7 @@
 {
     "id": "de.haeckerfelix.Fragments",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "47",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -57,7 +57,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/transmission/transmission",
-                    "tag": "4.0.6"
+                    "tag": "4.0.5"
                 },
                 {
                     "type": "patch",
