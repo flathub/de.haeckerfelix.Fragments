@@ -1,7 +1,7 @@
 {
     "id": "de.haeckerfelix.Fragments",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "47",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -34,6 +34,21 @@
     ],
     "modules": [
         {
+            "name": "curl",
+            "buildsystem": "autotools",
+            "cleanup": [],
+            "config-opts": [
+                "--with-openssl"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/curl/curl/releases/download/curl-8_10_1/curl-8.10.1.tar.xz",
+                    "sha256": "73a4b0e99596a09fa5924a4fb7e4b995a85fda0d18a2c02ab9cf134bebce04ee"
+                }
+            ]
+        },
+        {
             "name": "libevent",
             "sources": [
                 {
@@ -57,7 +72,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/transmission/transmission",
-                    "tag": "4.0.6"
+                    "tag": "4.0.5"
                 },
                 {
                     "type": "patch",
