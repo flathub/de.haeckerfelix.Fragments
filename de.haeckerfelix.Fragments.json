@@ -1,7 +1,7 @@
 {
     "id": "de.haeckerfelix.Fragments",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "48",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -46,6 +46,7 @@
         {
             "name": "transmission",
             "buildsystem": "cmake-ninja",
+            "build-options":{"env":{"CMAKE_POLICY_VERSION_MINIMUM": "3.5"}},
             "config-opts": [
                 "-DENABLE_CLI=OFF",
                 "-DENABLE_TESTS=OFF",
@@ -57,7 +58,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/transmission/transmission",
-                    "tag": "4.0.5"
+                    "tag": "4.0.6"
                 },
                 {
                     "type": "patch",
