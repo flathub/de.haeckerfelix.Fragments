@@ -1,7 +1,7 @@
 {
     "id": "de.haeckerfelix.Fragments",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -24,11 +24,8 @@
     "cleanup": [
         "/include",
         "/lib/pkgconfig",
-        "/man",
         "/share/doc",
-        "/share/gtk-doc",
         "/share/man",
-        "/share/pkgconfig",
         "*.la",
         "*.a"
     ],
@@ -58,7 +55,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/transmission/transmission",
-                    "tag": "4.0.5"
+                    "tag": "4.0.5",
+                    "commit": "a6fe2a64aa7eca089f96006cf082a12f0cde937f"
                 },
                 {
                     "type": "patch",
