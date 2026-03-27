@@ -15,7 +15,6 @@
         "--share=network",
         "--filesystem=host",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=fragments=debug,transmission_client=debug,transmission_gobject=debug",
         "--env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt"
     ],
     "build-options": {
